@@ -1,4 +1,4 @@
-import { Server } from './server';
+import { AppServer } from './app-server';
 
-const server = new Server();
+const server = new AppServer();
 console.log(server.sayHello());
