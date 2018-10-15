@@ -19,7 +19,23 @@ cd workshop-real-time-starter
 
 # Run Node.js Server
 
-To run server locally, just install dependencies using `npm` or `yarn`.
+To run server locally, just run the following commands:
+
+```
+cd server
+npm install 
+npm run webpack
+npm run start
+```
+
+If you don't want to use webpack, you can run:
+
+```
+cd server
+npm install
+tsc
+npm run start
+```
 
 # Run Angular Client
 
