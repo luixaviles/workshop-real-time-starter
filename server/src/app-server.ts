@@ -17,9 +17,16 @@ export class AppServer {
     }
 
     public listen() {
-        this.app.get('/', (req, res)=> res.send('hello world'));
-        this.app.listen(this.port, ()=> {
-            console.log(`Running server on port ${this.port}. Open http://localhost:3000`);
+        this.server.listen(this.port, () => {
+            console.log(`Running server on port ${this.port}`);
+        });
+
+        this.io.on('connect', (socket: SocketIO.Socket) => {
+            console.log('Client connected');
+
+            socket.on('disconnect', () => {
+                console.log('Client disconnected');
+            });
         });
     }
 }
