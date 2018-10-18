@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as socketIo from 'socket.io-client';
+import { Message } from './model/message';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
+  private socket;
 
   constructor() {
     this.socket = socketIo('http://localhost:3000');
