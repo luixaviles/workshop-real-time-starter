@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../shared/model/message';
+import { SocketService } from '../shared/socket.service';
 
 @Component({
   selector: 'wsc-messages',
@@ -21,9 +22,13 @@ export class MessagesComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 
   ngOnInit() {
+    this.socketService.onMessage().subscribe((message: Message) => {
+      console.log('received message', message);
+      this.messages.push(message);
+    });
   }
 
 }
