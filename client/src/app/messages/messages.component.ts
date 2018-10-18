@@ -28,6 +28,18 @@ export class MessagesComponent implements OnInit {
     this.socketService.onMessage().subscribe((message: Message) => {
       console.log('received message', message);
       this.messages.push(message);
+      if(message.content === 'finished') {
+        console.log('Finishing communication');
+        this.socketService.stop();
+      }
+    });
+
+    this.socketService.onEvent('connect').subscribe(() => {
+      console.log('connected');
+    });
+
+    this.socketService.onEvent('disconnect').subscribe(() => {
+      console.log('disconnected');
     });
   }
 

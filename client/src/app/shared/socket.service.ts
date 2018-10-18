@@ -22,4 +22,15 @@ export class SocketService {
       this.socket.on('message', (data: Message) => observer.next(data));
     });
   }
+
+  public onEvent(event: string): Observable<any> {
+    return new Observable<string>(observer => {
+        this.socket.on(event, () => observer.next());
+    });
+  }
+
+  public stop(): void {
+    this.socket.disconnect();
+    console.log('stop listening.');
+  }
 }
