@@ -22,6 +22,8 @@ export class MessagesComponent implements OnInit {
     }
   ];
 
+  message: string;
+
   constructor(private socketService: SocketService) { }
 
   ngOnInit() {
@@ -42,5 +44,14 @@ export class MessagesComponent implements OnInit {
       console.log('disconnected');
     });
   }
+
+  onSendMessage(message: string) {
+    this.socketService.sendMessage({
+      date: new Date().toISOString(),
+      from: 'client',
+      content: message
+    });
+    this.message = null;
+}
 
 }

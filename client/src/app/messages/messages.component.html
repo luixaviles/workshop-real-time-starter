@@ -1,3 +1,9 @@
+<mat-form-field>
+  <input matInput placeholder="what are you thinking?"
+         [(ngModel)]="message" (keyup.enter)="onSendMessage(message)">
+  <mat-hint>Send your message</mat-hint>
+</mat-form-field>
+
 <mat-list class="chat-list">
   <mat-list-item *ngFor="let message of messages">
       <h4 mat-line>{{message.from}} - {{message.content}}</h4>
